@@ -26,6 +26,8 @@ int main(int argc, char *argv[]) {
             starttoken = START_PREDICATE;
         } else if (strcmp(t, "START_OBJECT") == 0) {
             starttoken = START_OBJECT;
+        } else if (strcmp(t, "START_LITERAL") == 0) {
+            starttoken = START_LITERAL;
         } else {
             fprintf(stderr, "unrecognized start token \"%s\"\n", t);
             return 1;
@@ -42,6 +44,7 @@ int main(int argc, char *argv[]) {
 %token GREATERTHANSIGN
 %token LESSTHANSIGN
 %token QUOTATIONMARK
+%token START_LITERAL
 %token START_OBJECT
 %token START_PREDICATE
 %token START_STRING
@@ -59,6 +62,7 @@ start : START_URI uri
       | START_SUBJECT subject
       | START_PREDICATE predicate
       | START_OBJECT object
+      | START_LITERAL literal
       ;
 
 subject : clearsubject uri { printf("ntriplesbuilder_buildsubject();\n"); }
@@ -82,7 +86,16 @@ clearobject : { printf("ntriplesbuilder_clearobject();\n"); }
 buildobject : { printf("ntriplesbuilder_buildobject();\n"); }
             ;
 
-string : QUOTATIONMARK TEXT QUOTATIONMARK { printf("ntriplesbuilder_addstring(\"%s\");", $2); }
+literal : clearliteral string buildliteral
+        ;
+
+clearliteral : { printf("ntriplesbuilder_clearliteral();\n"); }
+             ;
+
+buildliteral : { printf("ntriplesbuilder_buildliteral();\n"); }
+             ;
+
+string : QUOTATIONMARK TEXT QUOTATIONMARK { printf("ntriplesbuilder_addstring(\"%s\");\n", $2); }
        ;
 
 uri : LESSTHANSIGN TEXT GREATERTHANSIGN { printf("ntriplesbuilder_adduri(\"%s\");\n", $2); }

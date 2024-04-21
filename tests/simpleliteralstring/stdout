@@ -1,0 +1,3 @@
+ntriplesbuilder_clearliteral();
+ntriplesbuilder_addstring("hello123");
+ntriplesbuilder_buildliteral();
