@@ -2,6 +2,8 @@
 
 #include "y.tab.h"
 
+#include "ntriplesbuilder.h"
+
 #include <stdio.h>
 #include <string.h>
 
@@ -95,54 +97,54 @@ newline : newline NEWLINE
 statement : clearstatement subject TAB predicate TAB object FULLSTOP buildstatement
           ;
 
-clearstatement : { printf("ntriplesbuilder_clearstatement();\n"); }
+clearstatement : { ntriplesbuilder_clearstatement(); }
                ;
 
-buildstatement : { printf("ntriplesbuilder_buildstatement();\n"); }
+buildstatement : { ntriplesbuilder_buildstatement(); }
                ;
 
-subject : clearsubject uri { printf("ntriplesbuilder_buildsubject();\n"); }
+subject : clearsubject uri { ntriplesbuilder_buildsubject(); }
         ;
 
-clearsubject : { printf("ntriplesbuilder_clearsubject();\n"); }
+clearsubject : { ntriplesbuilder_clearsubject(); }
              ;
 
-predicate : clearpredicate uri { printf("ntriplesbuilder_buildpredicate();\n"); }
+predicate : clearpredicate uri { ntriplesbuilder_buildpredicate(); }
           ;
 
-clearpredicate : { printf("ntriplesbuilder_clearpredicate();\n"); }
+clearpredicate : { ntriplesbuilder_clearpredicate(); }
                ;
 
 object : clearobject uri buildobject
        | clearobject literal buildobject
        ;
 
-clearobject : { printf("ntriplesbuilder_clearobject();\n"); }
+clearobject : { ntriplesbuilder_clearobject(); }
             ;
 
-buildobject : { printf("ntriplesbuilder_buildobject();\n"); }
+buildobject : { ntriplesbuilder_buildobject(); }
             ;
 
 literal : clearliteral string datatype buildliteral
         | clearliteral string buildliteral
         ;
 
-clearliteral : { printf("ntriplesbuilder_clearliteral();\n"); }
+clearliteral : { ntriplesbuilder_clearliteral(); }
              ;
 
-buildliteral : { printf("ntriplesbuilder_buildliteral();\n"); }
+buildliteral : { ntriplesbuilder_buildliteral(); }
              ;
 
 datatype : cleardatatype DOUBLECARET uri builddatatype
          ;
 
-cleardatatype : { printf("ntriplesbuilder_cleardatatype();\n"); }
+cleardatatype : { ntriplesbuilder_cleardatatype(); }
               ;
 
-builddatatype : { printf("ntriplesbuilder_builddatatype();\n"); }
+builddatatype : { ntriplesbuilder_builddatatype(); }
               ;
 
-string : QUOTATIONMARK str QUOTATIONMARK { printf("ntriplesbuilder_addstring(\"%s\");\n", $2); }
+string : QUOTATIONMARK str QUOTATIONMARK { ntriplesbuilder_addstring($2); }
        ;
 
 str : { *$$ = 0; }
@@ -150,5 +152,5 @@ str : { *$$ = 0; }
     | str TXT { strcat($$, $2); }
     ;
 
-uri : LESSTHANSIGN URI GREATERTHANSIGN { printf("ntriplesbuilder_adduri(\"%s\");\n", $2); }
+uri : LESSTHANSIGN URI GREATERTHANSIGN { ntriplesbuilder_adduri($2); }
     ;
