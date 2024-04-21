@@ -32,6 +32,8 @@ int main(int argc, char *argv[]) {
             starttoken = START_DATATYPE;
         } else if (strcmp(t, "START_STATEMENT") == 0) {
             starttoken = START_STATEMENT;
+        } else if (strcmp(t, "START_STATEMENTS") == 0) {
+            starttoken = START_STATEMENTS;
         } else {
             fprintf(stderr, "unrecognized start token \"%s\"\n", t);
             return 1;
@@ -49,6 +51,7 @@ int main(int argc, char *argv[]) {
 %token FULLSTOP
 %token GREATERTHANSIGN
 %token LESSTHANSIGN
+%token NEWLINE
 %token QUOTATIONMARK
 %token START_DATATYPE
 %token START_LITERAL
@@ -57,6 +60,7 @@ int main(int argc, char *argv[]) {
 %token START_STRING
 %token START_SUBJECT
 %token START_STATEMENT
+%token START_STATEMENTS
 %token START_URI
 %token TAB
 %token <text> URI
@@ -77,7 +81,11 @@ start : START_URI uri
       | START_LITERAL literal
       | START_DATATYPE datatype
       | START_STATEMENT statement
+      | START_STATEMENTS statements
       ;
+
+statements : statement NEWLINE statement
+           ;
 
 statement : clearstatement subject TAB predicate TAB object FULLSTOP buildstatement
           ;

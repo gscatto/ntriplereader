@@ -20,6 +20,10 @@ if (starttoken) {
 
 %}
 
+"\n" {
+    return NEWLINE;
+}
+
 " ." {
     return FULLSTOP;
 }
