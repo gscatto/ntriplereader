@@ -145,6 +145,7 @@ builddatatype : { printf("ntriplesbuilder_builddatatype();\n"); }
 string : QUOTATIONMARK str QUOTATIONMARK {
            printf("ntriplesbuilder_addstring(\"%s\");\n", $2);
            *yylval.text = 0;
+           *$2 = 0;
        }
        ;
 
