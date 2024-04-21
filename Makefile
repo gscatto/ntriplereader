@@ -1,5 +1,5 @@
 test: ntriplesreader
-	sh test.sh
+	sh test.sh $(shell find tests/* -type d)
 
 ntriplesreader: lex.yy.c y.tab.c
 	cc -o $@ $^

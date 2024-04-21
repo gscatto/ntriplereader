@@ -1,7 +1,6 @@
-tests="$(find tests/* -type d)"
 stdout=$(mktemp)
 stderr=$(mktemp)
-for t in $tests; do
+for t in $@; do
     cat $t/stdin | ./ntriplesreader $(cat $t/starttoken) > $stdout 2> $stderr
     if ! diff -q $t/stderr $stderr; then
 	diff $t/stderr $stderr
