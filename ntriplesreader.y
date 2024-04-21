@@ -92,7 +92,8 @@ clearobject : { printf("ntriplesbuilder_clearobject();\n"); }
 buildobject : { printf("ntriplesbuilder_buildobject();\n"); }
             ;
 
-literal : clearliteral string buildliteral
+literal : clearliteral string datatype buildliteral
+        | clearliteral string buildliteral
         ;
 
 clearliteral : { printf("ntriplesbuilder_clearliteral();\n"); }
