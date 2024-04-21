@@ -20,6 +20,10 @@ if (starttoken) {
 
 %}
 
+"^^" {
+    return DOUBLECARET;
+}
+
 "\"" {
     return QUOTATIONMARK;
 }
