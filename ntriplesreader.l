@@ -49,12 +49,12 @@ if (starttoken) {
 }
 
 [a-zA-Z0-9\-:/._#+\\]+ {
-    strcpy(yylval.text, yytext);
+    strcpy(yylval.yytext, yytext);
     return URI;
 }
 
 [èé ()']+ {
-    strcpy(yylval.text, yytext);
+    strcpy(yylval.yytext, yytext);
     return TXT;
 }
 

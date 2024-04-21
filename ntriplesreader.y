@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
 
 %start start
 
-%token <text> TXT
+%token <yytext> TXT
 %token DOUBLECARET
 %token FULLSTOP
 %token GREATERTHANSIGN
@@ -63,12 +63,12 @@ int main(int argc, char *argv[]) {
 %token START_STATEMENTS
 %token START_URI
 %token TAB
-%token <text> URI
+%token <yytext> URI
 
-%type <text> str
+%type <yytext> str
 
 %union {
-    char text[1024];
+    char yytext[1024];
 }
 
 %%
