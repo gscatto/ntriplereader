@@ -1,0 +1,11 @@
+ntriplesbuilder_clearstatement();
+ntriplesbuilder_clearsubject();
+ntriplesbuilder_adduri("SUBJECT");
+ntriplesbuilder_buildsubject();
+ntriplesbuilder_clearpredicate();
+ntriplesbuilder_adduri("PREDICATE");
+ntriplesbuilder_buildpredicate();
+ntriplesbuilder_clearobject();
+ntriplesbuilder_adduri("OBJECT");
+ntriplesbuilder_buildobject();
+ntriplesbuilder_buildstatement();

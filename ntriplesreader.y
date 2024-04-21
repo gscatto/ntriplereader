@@ -30,6 +30,8 @@ int main(int argc, char *argv[]) {
             starttoken = START_LITERAL;
         } else if (strcmp(t, "START_DATATYPE") == 0) {
             starttoken = START_DATATYPE;
+        } else if (strcmp(t, "START_STATEMENT") == 0) {
+            starttoken = START_STATEMENT;
         } else {
             fprintf(stderr, "unrecognized start token \"%s\"\n", t);
             return 1;
@@ -44,6 +46,7 @@ int main(int argc, char *argv[]) {
 
 %token <text> TXT
 %token DOUBLECARET
+%token FULLSTOP
 %token GREATERTHANSIGN
 %token LESSTHANSIGN
 %token QUOTATIONMARK
@@ -53,7 +56,9 @@ int main(int argc, char *argv[]) {
 %token START_PREDICATE
 %token START_STRING
 %token START_SUBJECT
+%token START_STATEMENT
 %token START_URI
+%token TAB
 %token <text> URI
 
 %type <text> str
@@ -71,7 +76,17 @@ start : START_URI uri
       | START_OBJECT object
       | START_LITERAL literal
       | START_DATATYPE datatype
+      | START_STATEMENT statement
       ;
+
+statement : clearstatement subject TAB predicate TAB object FULLSTOP buildstatement
+          ;
+
+clearstatement : { printf("ntriplesbuilder_clearstatement();\n"); }
+               ;
+
+buildstatement : { printf("ntriplesbuilder_buildstatement();\n"); }
+               ;
 
 subject : clearsubject uri { printf("ntriplesbuilder_buildsubject();\n"); }
         ;

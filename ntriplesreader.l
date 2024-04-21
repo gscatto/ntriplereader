@@ -20,6 +20,14 @@ if (starttoken) {
 
 %}
 
+" ." {
+    return FULLSTOP;
+}
+
+"\t" {
+    return TAB;
+}
+
 "^^" {
     return DOUBLECARET;
 }
