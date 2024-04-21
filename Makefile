@@ -1,11 +1,11 @@
 test: ntriplereader_test
-	sh test.sh $(shell find tests/* -type d)
+	sh test/run.sh $(shell find test/all/* -type d)
 
-ntriplereader_test: lex.yy.c y.tab.c ntriplebuildermock.c
-	cc -o $@ $^
+ntriplereader_test: lex.yy.c y.tab.c test/ntriplebuildermock.c
+	cc -o $@ -I main $^
 
-lex.yy.c: ntriplereader.l y.tab.h
+lex.yy.c: main/ntriplereader.l y.tab.h
 	lex $<
 
-y.tab.h y.tab.c: ntriplereader.y
+y.tab.h y.tab.c: main/ntriplereader.y
 	yacc -d $<
