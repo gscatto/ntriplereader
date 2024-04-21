@@ -17,9 +17,13 @@ int main() {
 
 %start uri
 
+%token <text> TEXT
 %token GREATERTHANSIGN
 %token LESSTHANSIGN
-%token TEXT
+
+%union {
+    char text[1024];
+}
 
 %%
 
