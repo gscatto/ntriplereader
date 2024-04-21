@@ -1,0 +1,3 @@
+<http://dati.camera.it/ocd/voto.rdf/vd19_032_001_308816>	<http://dati.camera.it/ocd/rif_gruppoParlamentare>	<http://dati.camera.it/ocd/gruppoParlamentare.rdf/gr4154> .
+<http://dati.camera.it/ocd/voto.rdf/vd19_032_001_308898>	<http://dati.camera.it/ocd/rif_votazione>	<http://dati.camera.it/ocd/votazione.rdf/vs19_032_001> .
+<http://dati.camera.it/ocd/voto.rdf/vd19_032_001_307570>	<http://lod.xdams.org/ontologies/ods/modified>	"2023-01-28T15:46:15Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .

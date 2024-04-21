@@ -149,7 +149,7 @@ string : QUOTATIONMARK str QUOTATIONMARK {
        }
        ;
 
-str : { }
+str : { *$$ = 0; }
      | str URI { strcat($$, $2); }
      | str TXT { strcat($$, $2); }
      ;
