@@ -85,6 +85,7 @@ start : START_URI uri
       ;
 
 statements : statement NEWLINE statement
+           | statement
            ;
 
 statement : clearstatement subject TAB predicate TAB object FULLSTOP buildstatement
