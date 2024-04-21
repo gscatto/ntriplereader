@@ -42,11 +42,11 @@ int main(int argc, char *argv[]) {
 %token GREATERTHANSIGN
 %token LESSTHANSIGN
 %token QUOTATIONMARK
-%token START_STRING
-%token START_URI
-%token START_SUBJECT
-%token START_PREDICATE
 %token START_OBJECT
+%token START_PREDICATE
+%token START_STRING
+%token START_SUBJECT
+%token START_URI
 
 %union {
     char text[1024];
@@ -68,10 +68,10 @@ clearsubject : { printf("ntriplesbuilder_clearsubject();\n"); }
              ;
 
 predicate : clearpredicate uri { printf("ntriplesbuilder_buildpredicate();\n"); }
-        ;
+          ;
 
 clearpredicate : { printf("ntriplesbuilder_clearpredicate();\n"); }
-             ;
+               ;
 
 object : clearobject uri buildobject
        ;
@@ -83,5 +83,7 @@ buildobject : { printf("ntriplesbuilder_buildobject();\n"); }
             ;
 
 string : QUOTATIONMARK TEXT QUOTATIONMARK { printf("ntriplesbuilder_addstring(\"%s\");", $2); }
+       ;
 
 uri : LESSTHANSIGN TEXT GREATERTHANSIGN { printf("ntriplesbuilder_adduri(\"%s\");\n", $2); }
+    ;
