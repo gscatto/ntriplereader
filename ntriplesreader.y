@@ -142,7 +142,10 @@ cleardatatype : { printf("ntriplesbuilder_cleardatatype();\n"); }
 builddatatype : { printf("ntriplesbuilder_builddatatype();\n"); }
               ;
 
-string : QUOTATIONMARK str QUOTATIONMARK { printf("ntriplesbuilder_addstring(\"%s\");\n", $2); }
+string : QUOTATIONMARK str QUOTATIONMARK {
+           printf("ntriplesbuilder_addstring(\"%s\");\n", $2);
+           *yylval.text = 0;
+       }
        ;
 
 str : { }
