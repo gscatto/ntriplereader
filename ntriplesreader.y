@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
 
 %start start
 
-%token <text> TEXT
+%token <text> TXT
 %token DOUBLECARET
 %token GREATERTHANSIGN
 %token LESSTHANSIGN
@@ -54,6 +54,9 @@ int main(int argc, char *argv[]) {
 %token START_STRING
 %token START_SUBJECT
 %token START_URI
+%token <text> URI
+
+%type <text> str
 
 %union {
     char text[1024];
@@ -111,8 +114,13 @@ cleardatatype : { printf("ntriplesbuilder_cleardatatype();\n"); }
 builddatatype : { printf("ntriplesbuilder_builddatatype();\n"); }
               ;
 
-string : QUOTATIONMARK TEXT QUOTATIONMARK { printf("ntriplesbuilder_addstring(\"%s\");\n", $2); }
+string : QUOTATIONMARK str QUOTATIONMARK { printf("ntriplesbuilder_addstring(\"%s\");\n", $2); }
        ;
 
-uri : LESSTHANSIGN TEXT GREATERTHANSIGN { printf("ntriplesbuilder_adduri(\"%s\");\n", $2); }
+str : { }
+     | str URI { strcat($$, $2); }
+     | str TXT { strcat($$, $2); }
+     ;
+
+uri : LESSTHANSIGN URI GREATERTHANSIGN { printf("ntriplesbuilder_adduri(\"%s\");\n", $2); }
     ;

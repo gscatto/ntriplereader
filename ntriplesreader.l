@@ -36,9 +36,14 @@ if (starttoken) {
     return GREATERTHANSIGN;
 }
 
-[a-zA-Z0-9:/. èé]+ {
+[a-zA-Z0-9:/.]+ {
     strcpy(yylval.text, yytext);
-    return TEXT;
+    return URI;
+}
+
+[èé ]+ {
+    strcpy(yylval.text, yytext);
+    return TXT;
 }
 
 . {
