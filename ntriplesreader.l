@@ -2,7 +2,7 @@
 
 #include "y.tab.h"
 
-int starttoken = 0;
+int starttoken = START_STATEMENTS;
 
 %}
 
