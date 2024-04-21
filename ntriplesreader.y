@@ -47,6 +47,7 @@ int main(int argc, char *argv[]) {
 %start start
 
 %token <yytext> TXT
+%token <yytext> URI
 %token DOUBLECARET
 %token FULLSTOP
 %token GREATERTHANSIGN
@@ -57,13 +58,12 @@ int main(int argc, char *argv[]) {
 %token START_LITERAL
 %token START_OBJECT
 %token START_PREDICATE
-%token START_STRING
-%token START_SUBJECT
 %token START_STATEMENT
 %token START_STATEMENTS
+%token START_STRING
+%token START_SUBJECT
 %token START_URI
 %token TAB
-%token <yytext> URI
 
 %type <yytext> str
 
