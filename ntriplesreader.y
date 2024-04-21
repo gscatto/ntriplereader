@@ -84,7 +84,7 @@ start : START_URI uri
       | START_STATEMENTS statements
       ;
 
-statements : statement NEWLINE statement
+statements : statements NEWLINE statement
            | statement
            ;
 
