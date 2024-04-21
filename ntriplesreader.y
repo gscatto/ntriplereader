@@ -84,9 +84,13 @@ start : START_URI uri
       | START_STATEMENTS statements
       ;
 
-statements : statements NEWLINE statement
+statements : statements newline statement
            | statement
            ;
+
+newline : newline NEWLINE
+        | NEWLINE
+        ;
 
 statement : clearstatement subject TAB predicate TAB object FULLSTOP buildstatement
           ;
