@@ -49,7 +49,7 @@ if (starttoken) {
     return URI;
 }
 
-[èé ]+ {
+[èé ()]+ {
     strcpy(yylval.text, yytext);
     return TXT;
 }
