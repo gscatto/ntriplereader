@@ -22,6 +22,8 @@ int main(int argc, char *argv[]) {
             starttoken = START_STRING;
         } else if (strcmp(t, "START_SUBJECT") == 0) {
             starttoken = START_SUBJECT;
+        } else if (strcmp(t, "START_PREDICATE") == 0) {
+            starttoken = START_PREDICATE;
         } else {
             fprintf(stderr, "unrecognized start token \"%s\"\n", t);
             return 1;
@@ -41,6 +43,7 @@ int main(int argc, char *argv[]) {
 %token START_STRING
 %token START_URI
 %token START_SUBJECT
+%token START_PREDICATE
 
 %union {
     char text[1024];
@@ -51,12 +54,19 @@ int main(int argc, char *argv[]) {
 start : START_URI uri
       | START_STRING string
       | START_SUBJECT subject
+      | START_PREDICATE predicate
       ;
 
 subject : clearsubject uri { printf("ntriplesbuilder_buildsubject();\n"); }
         ;
 
 clearsubject : { printf("ntriplesbuilder_clearsubject();\n"); }
+             ;
+
+predicate : clearpredicate uri { printf("ntriplesbuilder_buildpredicate();\n"); }
+        ;
+
+clearpredicate : { printf("ntriplesbuilder_clearpredicate();\n"); }
              ;
 
 string : QUOTATIONMARK TEXT QUOTATIONMARK { printf("ntriplesbuilder_addstring(\"%s\");", $2); }
