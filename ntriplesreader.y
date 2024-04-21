@@ -146,9 +146,9 @@ string : QUOTATIONMARK str QUOTATIONMARK { printf("ntriplesbuilder_addstring(\"%
        ;
 
 str : { *$$ = 0; }
-     | str URI { strcat($$, $2); }
-     | str TXT { strcat($$, $2); }
-     ;
+    | str URI { strcat($$, $2); }
+    | str TXT { strcat($$, $2); }
+    ;
 
 uri : LESSTHANSIGN URI GREATERTHANSIGN { printf("ntriplesbuilder_adduri(\"%s\");\n", $2); }
     ;
