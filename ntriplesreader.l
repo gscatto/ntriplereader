@@ -20,6 +20,10 @@ if (starttoken) {
 
 %}
 
+"\"" {
+    return QUOTATIONMARK;
+}
+
 "<" {
     return LESSTHANSIGN;
 }

@@ -18,6 +18,8 @@ int main(int argc, char *argv[]) {
         char *t = argv[1];
         if (strcmp(t, "START_URI") == 0) {
             starttoken = START_URI;
+        } else if (strcmp(t, "START_STRING") == 0) {
+            starttoken = START_STRING;
         } else {
             fprintf(stderr, "unrecognized start token \"%s\"\n", t);
             return 1;
@@ -33,6 +35,8 @@ int main(int argc, char *argv[]) {
 %token <text> TEXT
 %token GREATERTHANSIGN
 %token LESSTHANSIGN
+%token QUOTATIONMARK
+%token START_STRING
 %token START_URI
 
 %union {
@@ -42,6 +46,9 @@ int main(int argc, char *argv[]) {
 %%
 
 start : START_URI uri
+      | START_STRING string
       ;
+
+string : QUOTATIONMARK TEXT QUOTATIONMARK { printf("ntriplesbuilder_addstring(\"%s\")", $2); }
 
 uri : LESSTHANSIGN TEXT GREATERTHANSIGN { printf("ntriplesbuilder_adduri(\"%s\")", $2); }
