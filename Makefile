@@ -1,7 +1,7 @@
-test: ntriplesreader
+test: ntriplesreader_test
 	sh test.sh $(shell find tests/* -type d)
 
-ntriplesreader: lex.yy.c y.tab.c
+ntriplesreader_test: lex.yy.c y.tab.c
 	cc -o $@ $^
 
 lex.yy.c: ntriplesreader.l y.tab.h
