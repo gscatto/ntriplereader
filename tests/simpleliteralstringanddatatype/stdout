@@ -1,6 +1,6 @@
-ntriplesbuilder_clearliteral();
-ntriplesbuilder_addstring("hello123");
-ntriplesbuilder_cleardatatype();
-ntriplesbuilder_adduri("http://example.org/resource13");
-ntriplesbuilder_builddatatype();
-ntriplesbuilder_buildliteral();
+ntriplebuilder_clearliteral();
+ntriplebuilder_addstring("hello123");
+ntriplebuilder_cleardatatype();
+ntriplebuilder_adduri("http://example.org/resource13");
+ntriplebuilder_builddatatype();
+ntriplebuilder_buildliteral();

@@ -1,1 +1,1 @@
-ntriplesbuilder_adduri("http://example.org/resource13");
+ntriplebuilder_adduri("http://example.org/resource13");

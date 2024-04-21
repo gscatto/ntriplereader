@@ -2,7 +2,7 @@
 
 #include "y.tab.h"
 
-#include "ntriplesbuilder.h"
+#include "ntriplebuilder.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -97,54 +97,54 @@ newline : newline NEWLINE
 statement : clearstatement subject TAB predicate TAB object FULLSTOP buildstatement
           ;
 
-clearstatement : { ntriplesbuilder_clearstatement(); }
+clearstatement : { ntriplebuilder_clearstatement(); }
                ;
 
-buildstatement : { ntriplesbuilder_buildstatement(); }
+buildstatement : { ntriplebuilder_buildstatement(); }
                ;
 
-subject : clearsubject uri { ntriplesbuilder_buildsubject(); }
+subject : clearsubject uri { ntriplebuilder_buildsubject(); }
         ;
 
-clearsubject : { ntriplesbuilder_clearsubject(); }
+clearsubject : { ntriplebuilder_clearsubject(); }
              ;
 
-predicate : clearpredicate uri { ntriplesbuilder_buildpredicate(); }
+predicate : clearpredicate uri { ntriplebuilder_buildpredicate(); }
           ;
 
-clearpredicate : { ntriplesbuilder_clearpredicate(); }
+clearpredicate : { ntriplebuilder_clearpredicate(); }
                ;
 
 object : clearobject uri buildobject
        | clearobject literal buildobject
        ;
 
-clearobject : { ntriplesbuilder_clearobject(); }
+clearobject : { ntriplebuilder_clearobject(); }
             ;
 
-buildobject : { ntriplesbuilder_buildobject(); }
+buildobject : { ntriplebuilder_buildobject(); }
             ;
 
 literal : clearliteral string datatype buildliteral
         | clearliteral string buildliteral
         ;
 
-clearliteral : { ntriplesbuilder_clearliteral(); }
+clearliteral : { ntriplebuilder_clearliteral(); }
              ;
 
-buildliteral : { ntriplesbuilder_buildliteral(); }
+buildliteral : { ntriplebuilder_buildliteral(); }
              ;
 
 datatype : cleardatatype DOUBLECARET uri builddatatype
          ;
 
-cleardatatype : { ntriplesbuilder_cleardatatype(); }
+cleardatatype : { ntriplebuilder_cleardatatype(); }
               ;
 
-builddatatype : { ntriplesbuilder_builddatatype(); }
+builddatatype : { ntriplebuilder_builddatatype(); }
               ;
 
-string : QUOTATIONMARK str QUOTATIONMARK { ntriplesbuilder_addstring($2); }
+string : QUOTATIONMARK str QUOTATIONMARK { ntriplebuilder_addstring($2); }
        ;
 
 str : { *$$ = 0; }
@@ -152,5 +152,5 @@ str : { *$$ = 0; }
     | str TXT { strcat($$, $2); }
     ;
 
-uri : LESSTHANSIGN URI GREATERTHANSIGN { ntriplesbuilder_adduri($2); }
+uri : LESSTHANSIGN URI GREATERTHANSIGN { ntriplebuilder_adduri($2); }
     ;

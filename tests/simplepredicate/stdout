@@ -1,3 +1,3 @@
-ntriplesbuilder_clearpredicate();
-ntriplesbuilder_adduri("http://example.org/resource13");
-ntriplesbuilder_buildpredicate();
+ntriplebuilder_clearpredicate();
+ntriplebuilder_adduri("http://example.org/resource13");
+ntriplebuilder_buildpredicate();
