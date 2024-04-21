@@ -36,7 +36,7 @@ if (starttoken) {
     return GREATERTHANSIGN;
 }
 
-[a-zA-Z0-9:/. ]+ {
+[a-zA-Z0-9:/. èé]+ {
     strcpy(yylval.text, yytext);
     return TEXT;
 }
