@@ -78,6 +78,7 @@ clearpredicate : { printf("ntriplesbuilder_clearpredicate();\n"); }
                ;
 
 object : clearobject uri buildobject
+       | clearobject literal buildobject
        ;
 
 clearobject : { printf("ntriplesbuilder_clearobject();\n"); }
