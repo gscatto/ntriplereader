@@ -2,11 +2,23 @@
 
 #include "y.tab.h"
 
+int starttoken = 0;
+
 %}
 
 %option noyywrap
 
 %%
+
+%{
+
+if (starttoken) {
+   int rv = starttoken;
+   starttoken = 0;
+   return rv;
+}
+
+%}
 
 "<" {
     return LESSTHANSIGN;
