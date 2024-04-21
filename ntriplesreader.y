@@ -103,13 +103,13 @@ buildliteral : { printf("ntriplesbuilder_buildliteral();\n"); }
              ;
 
 datatype : cleardatatype DOUBLECARET uri builddatatype
-        ;
+         ;
 
 cleardatatype : { printf("ntriplesbuilder_cleardatatype();\n"); }
-             ;
+              ;
 
 builddatatype : { printf("ntriplesbuilder_builddatatype();\n"); }
-             ;
+              ;
 
 string : QUOTATIONMARK TEXT QUOTATIONMARK { printf("ntriplesbuilder_addstring(\"%s\");\n", $2); }
        ;
