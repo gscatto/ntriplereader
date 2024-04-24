@@ -1,9 +1,11 @@
 check:
 	meson test -C build --print-errorlogs
 
-reconfigure:
-	python test/meson.build.py test > test/meson.build
+reconfigure: configure
 	meson setup build --reconfigure
 
-setup:
+setup: configure
 	meson setup build
+
+configure:
+	python test/meson.build.py test > test/meson.build
