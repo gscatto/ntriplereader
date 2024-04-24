@@ -17,7 +17,7 @@ void ntriplebuilderspy_init() {
 void ntriplebuilderspy_verify(char *expected) {
   if (strcmp(actual, expected) != 0) {
     fprintf(stderr,
-	    "error: expect interaction to be \"%s\", got \"%s\"",
+	    "error: expected interaction to be \"%s\", got \"%s\"",
 	    expected,
 	    actual);
     exit(EXIT_FAILURE);
