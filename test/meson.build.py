@@ -15,6 +15,7 @@ ntriplereadertest_lib = library(
 ntriplereadertest_dep = declare_dependency(
   link_with: ntriplereadertest_lib
 )
+
 ''')
 
 path = sys.argv[1]

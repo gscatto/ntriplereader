@@ -10,4 +10,5 @@ ntriplereadertest_lib = library(
 ntriplereadertest_dep = declare_dependency(
   link_with: ntriplereadertest_lib
 )
+
 test('test', executable('ntriplereader_test', 'test.c', dependencies: [ntriplereader_dep, ntriplereadertest_dep]))
