@@ -1,4 +1,11 @@
+import os
 import sys
 
 
-sys.stdout.write("test('test', executable('ntriplereader_test', 'test.c'))\n")
+path = sys.argv[1]
+for (dirpath, dirnames, filenames) in os.walk(path):
+    for filename in filenames:
+        if filename.endswith('test.c'):
+            testname = filename.removesuffix('.c')
+            line = f"test('{testname}', executable('ntriplereader_{testname}', '{filename}'))\n"
+            sys.stdout.write(line)
