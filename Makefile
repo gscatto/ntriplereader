@@ -7,5 +7,4 @@ reconfigure: configure
 setup: configure
 	meson setup build
 
-configure:
-	python test/meson.build.py test > test/meson.build
+include test/Makefile
