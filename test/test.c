@@ -1,5 +1,4 @@
 #include "ntriplebuilderspy.h"
-#include <ntriplebuilder.h>
 #include <ntriplereader.h>
 
 int main() {
