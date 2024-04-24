@@ -10,7 +10,7 @@ void ntriplebuilderspy_reporttokenerror() {
   strcat(ntriplebuilderspy_interactions, "reporttokenerror()");
 }
 
-void ntriplebuilderspy_assert_interactions(char *interactions) {
+void ntriplebuilderspy_verify(char *interactions) {
   if (strcmp(ntriplebuilderspy_interactions, interactions) != 0) {
     fprintf(stderr,
 	    "error: expect ntriplebuilderspy_interactions to be \"%s\", got \"%s\"",

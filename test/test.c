@@ -5,5 +5,5 @@
 int main() {
   ntriplebuilderspy_init();
   ntriplereader_read();
-  ntriplebuilderspy_assert_interactions("reporttokenerror()");
+  ntriplebuilderspy_verify("reporttokenerror()");
 }
