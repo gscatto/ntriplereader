@@ -4,18 +4,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-char ntriplebuilderspy_interactions[1024];
+char actual[1024];
 
 void ntriplebuilderspy_reporttokenerror() {
-  strcat(ntriplebuilderspy_interactions, "reporttokenerror()");
+  strcat(actual, "reporttokenerror()");
 }
 
-void ntriplebuilderspy_verify(char *interactions) {
-  if (strcmp(ntriplebuilderspy_interactions, interactions) != 0) {
+void ntriplebuilderspy_verify(char *expected) {
+  if (strcmp(actual, expected) != 0) {
     fprintf(stderr,
-	    "error: expect ntriplebuilderspy_interactions to be \"%s\", got \"%s\"",
-	    interactions,
-	    ntriplebuilderspy_interactions);
+	    "error: expect interaction to be \"%s\", got \"%s\"",
+	    expected,
+	    actual);
     exit(EXIT_FAILURE);
   }
 }
