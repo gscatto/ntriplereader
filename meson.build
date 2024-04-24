@@ -1,3 +1,3 @@
 project('ntriplereader', 'c')
 
-test('test', executable('ntriplereader_test', 'test.c'))
+test('test', executable('ntriplereader_test', 'test/test.c'))
