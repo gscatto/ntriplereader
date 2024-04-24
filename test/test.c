@@ -4,20 +4,28 @@
 #include <stdlib.h>
 #include <string.h>
 
-char ntriplebuilder_interactions[1024];
+char ntriplebuilderspy_interactions[1024];
 
-void ntriplebuilder_reporttokenerror() {
-  strcat(ntriplebuilder_interactions, "reporttokenerror()");
+void ntriplebuilderspy_reporttokenerror() {
+  strcat(ntriplebuilderspy_interactions, "reporttokenerror()");
+}
+
+void ntriplebuilderspy_assert_interactions(char *interactions) {
+  if (strcmp(ntriplebuilderspy_interactions, interactions) != 0) {
+    fprintf(stderr,
+	    "error: expect ntriplebuilderspy_interactions to be \"%s\", got \"%s\"",
+	    interactions,
+	    ntriplebuilderspy_interactions);
+    exit(EXIT_FAILURE);
+  }
+}
+
+void ntriplebuilderspy_init() {
+  ntriplebuilder_setreporttokenerror(ntriplebuilderspy_reporttokenerror);
 }
 
 int main() {
-  ntriplebuilder_setreporttokenerror(ntriplebuilder_reporttokenerror);
+  ntriplebuilderspy_init();
   ntriplereader_read();
-  if (strcmp(ntriplebuilder_interactions, "reporttokenerror()") != 0) {
-    fprintf(stderr,
-	    "error: expect ntriplebuilderspy_interactions to be \"%s\", got \"%s\"",
-	    "reporttokenerror()",
-	    ntriplebuilder_interactions);
-    exit(EXIT_FAILURE);
-  }
+  ntriplebuilderspy_assert_interactions("reporttokenerror()");
 }
