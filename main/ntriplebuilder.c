@@ -1,7 +1,7 @@
 #include <ntriplebuilder.h>
 #include <stdlib.h>
 
-ntriplebuilderspy_reporttokenerror_t reporttokenerror = NULL;
+static ntriplebuilderspy_reporttokenerror_t reporttokenerror = NULL;
 
 void ntriplebuilder_reporttokenerror() {
   if (reporttokenerror != NULL)

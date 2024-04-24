@@ -6,8 +6,12 @@
 
 char actual[1024];
 
-void ntriplebuilderspy_reporttokenerror() {
+static void reporttokenerror() {
   strcat(actual, "reporttokenerror()");
+}
+
+void ntriplebuilderspy_init() {
+  ntriplebuilder_setreporttokenerror(reporttokenerror);
 }
 
 void ntriplebuilderspy_verify(char *expected) {
@@ -18,8 +22,4 @@ void ntriplebuilderspy_verify(char *expected) {
 	    actual);
     exit(EXIT_FAILURE);
   }
-}
-
-void ntriplebuilderspy_init() {
-  ntriplebuilder_setreporttokenerror(ntriplebuilderspy_reporttokenerror);
 }
